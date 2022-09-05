@@ -1,12 +1,14 @@
 import { createGlobalStyle } from "styled-components";
+import { ThemeType } from "../styles/themes";
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
     html,
     body {
         padding: 0;
         margin: 0;
         font-family: 'Nunito Sans', sans-serif;
         font-size: 14px;
+        background-color: ${({ theme }) => theme.colors.background};
     }
     * {
     box-sizing: border-box;
