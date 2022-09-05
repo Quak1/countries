@@ -18,7 +18,7 @@ const Grid = styled.div`
   margin: 5.7rem;
   margin: 5.5vw;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
   gap: 5.3rem;
 
   @media (max-width: 680px) {
