@@ -1,4 +1,5 @@
 import type { InferGetStaticPropsType } from "next";
+import { useState } from "react";
 import styled from "styled-components";
 
 import { getAllCountries } from "../lib/countries";
@@ -28,12 +29,44 @@ const Grid = styled.div`
 const Home = ({
   countries,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const [textFilter, setTextFilter] = useState("");
+  const [regionFilter, setRegionFilter] = useState("");
+
+  const filteredByRegion = !regionFilter
+    ? countries
+    : countries.filter((country) => {
+        return country.region === regionFilter;
+      });
+
+  const filteredCountries = filteredByRegion.filter((country) => {
+    return country.name.common.toLowerCase().includes(textFilter.toLowerCase());
+  });
+
   return (
-    <Grid>
-      {countries.map((entry) => (
-        <CountryCard country={entry} key={entry.cca3} />
-      ))}
-    </Grid>
+    <>
+      <input
+        type="text"
+        value={textFilter}
+        onChange={(e) => setTextFilter(e.target.value)}
+      />
+      <select
+        name="region"
+        value={regionFilter}
+        onChange={(e) => setRegionFilter(e.target.value)}
+      >
+        <option value="">Filter by Region</option>
+        <option value="Africa">Africa</option>
+        <option value="Americas">America</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="Oceania">Oceania</option>
+      </select>
+      <Grid>
+        {filteredCountries.map((entry) => (
+          <CountryCard country={entry} key={entry.cca3} />
+        ))}
+      </Grid>
+    </>
   );
 };
 
