@@ -39,6 +39,10 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
             rel="stylesheet"
           />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,100,1,0&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

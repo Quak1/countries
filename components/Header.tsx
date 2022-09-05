@@ -5,6 +5,7 @@ import ThemeToggler from "./ThemeToggler";
 const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   font-size: 24px;
   font-weight: 800;
