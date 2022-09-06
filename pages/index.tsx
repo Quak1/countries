@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import { getAllCountries } from "../lib/countries";
 import CountryCard from "../components/CountryCard";
+import SelectRegion from "../components/SelectRegion";
 
 export const getStaticProps = async () => {
   const countries = await getAllCountries();
@@ -38,9 +39,13 @@ const Home = ({
         return country.region === regionFilter;
       });
 
-  const filteredCountries = filteredByRegion.filter((country) => {
-    return country.name.common.toLowerCase().includes(textFilter.toLowerCase());
-  });
+  const filteredCountries = !textFilter
+    ? filteredByRegion
+    : filteredByRegion.filter((country) => {
+        return country.name.common
+          .toLowerCase()
+          .includes(textFilter.toLowerCase());
+      });
 
   return (
     <>
@@ -49,18 +54,7 @@ const Home = ({
         value={textFilter}
         onChange={(e) => setTextFilter(e.target.value)}
       />
-      <select
-        name="region"
-        value={regionFilter}
-        onChange={(e) => setRegionFilter(e.target.value)}
-      >
-        <option value="">Filter by Region</option>
-        <option value="Africa">Africa</option>
-        <option value="Americas">America</option>
-        <option value="Asia">Asia</option>
-        <option value="Europe">Europe</option>
-        <option value="Oceania">Oceania</option>
-      </select>
+      <SelectRegion defaultValue={regionFilter} onChange={setRegionFilter} />
       <Grid>
         {filteredCountries.map((entry) => (
           <CountryCard country={entry} key={entry.cca3} />
