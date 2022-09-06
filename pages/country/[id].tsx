@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import Image from "next/image";
 
+import CountryDetails from "../../components/CountryDetails";
 import { getAllIds, getCountryByCode } from "../../lib/countries";
 import { Country } from "../../types";
 
@@ -9,7 +10,7 @@ interface DetailsProps {
 }
 
 const Details = ({ country }: DetailsProps) => {
-  return <div>{country.name.common}</div>;
+  return <CountryDetails country={country} />;
 };
 
 export const getStaticPaths = async () => {

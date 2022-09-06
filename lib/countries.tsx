@@ -24,11 +24,13 @@ export async function getCountryByCode(id: string) {
   const res = await fetch(`${API_URL}/alpha/${id}`);
   const country: Country = (await res.json())[0];
 
-  const borderCountriesNames = await Promise.all(
-    country.borders.map((country) => getCommonCountryName(country))
-  );
+  if (country.borders) {
+    const borderCountriesNames = await Promise.all(
+      country.borders.map((country) => getCommonCountryName(country))
+    );
+    country.borders = borderCountriesNames;
+  }
 
-  country.borders = borderCountriesNames;
   return country;
 }
 
