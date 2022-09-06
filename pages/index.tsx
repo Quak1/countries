@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { getAllCountries } from "../lib/countries";
 import CountryCard from "../components/CountryCard";
 import SelectRegion from "../components/SelectRegion";
+import TextFilter from "../components/TextFilter";
 
 export const getStaticProps = async () => {
   const countries = await getAllCountries();
@@ -16,8 +17,7 @@ export const getStaticProps = async () => {
 };
 
 const Grid = styled.div`
-  margin: 5.7rem;
-  margin: 5.5vw;
+  margin: 0 5.5vw;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
   gap: 5.3rem;
@@ -25,6 +25,12 @@ const Grid = styled.div`
   @media (max-width: 680px) {
     margin: 15vw;
   }
+`;
+
+const FiltersContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 48px 5.5vw;
 `;
 
 const Home = ({
@@ -49,12 +55,10 @@ const Home = ({
 
   return (
     <>
-      <input
-        type="text"
-        value={textFilter}
-        onChange={(e) => setTextFilter(e.target.value)}
-      />
-      <SelectRegion defaultValue={regionFilter} onChange={setRegionFilter} />
+      <FiltersContainer>
+        <TextFilter value={textFilter} onChange={setTextFilter} />
+        <SelectRegion defaultValue={regionFilter} onChange={setRegionFilter} />
+      </FiltersContainer>
       <Grid>
         {filteredCountries.map((entry) => (
           <CountryCard country={entry} key={entry.cca3} />
