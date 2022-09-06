@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import Image from "next/image";
+import styled from "styled-components";
 
 import CountryDetails from "../../components/CountryDetails";
 import { getAllIds, getCountryByCode } from "../../lib/countries";
@@ -9,8 +9,18 @@ interface DetailsProps {
   country: Country;
 }
 
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 80px;
+`;
+
 const Details = ({ country }: DetailsProps) => {
-  return <CountryDetails country={country} />;
+  return (
+    <Container>
+      <CountryDetails country={country} />
+    </Container>
+  );
 };
 
 export const getStaticPaths = async () => {
