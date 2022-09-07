@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle<{ theme: any }>`
         font-family: 'Nunito Sans', sans-serif;
         font-size: 14px;
         background-color: ${({ theme }) => theme.colors.background};
+        color: ${({ theme }) => theme.colors.text};
     }
     * {
     box-sizing: border-box;
