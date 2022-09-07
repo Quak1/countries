@@ -18,11 +18,18 @@ export async function getAllCountries() {
 export async function getAllIds() {
   const res = await fetch(`${API_URL}/all?fields=cca3`);
   const countryCodes: { cca3: string }[] = await res.json();
-  return countryCodes.map((code) => ({
-    params: {
-      id: code.cca3,
+  return countryCodes.flatMap((code) => [
+    {
+      params: {
+        id: code.cca3,
+      },
     },
-  }));
+    {
+      params: {
+        id: code.cca3.toLowerCase(),
+      },
+    },
+  ]);
 }
 
 export async function getCountryByCode(id: string) {
