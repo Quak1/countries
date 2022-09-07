@@ -20,6 +20,10 @@ const FlagContainer = styled.div`
   max-width: 560px;
   max-height: 400px;
   flex: 2 1 400px;
+
+  @media (max-width: 680px) {
+    min-width: 85vw;
+  }
 `;
 
 const InfoContainer = styled.div`

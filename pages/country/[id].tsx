@@ -12,10 +12,18 @@ interface DetailsProps {
 
 const Container = styled.div`
   margin: 0 80px;
+
+  @media (max-width: 680px) {
+    margin: 0 7.5vw;
+  }
 `;
 
 const Back = styled.div`
   margin: 80px 0;
+
+  @media (max-width: 680px) {
+    margin: 40px 0;
+  }
 `;
 
 const Details = ({ country }: DetailsProps) => {
