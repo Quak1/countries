@@ -4,10 +4,10 @@ import styled from "styled-components";
 import CountryDetails from "../../components/CountryDetails";
 import BackButton from "../../components/BackButton";
 import { getAllIds, getCountryByCode } from "../../lib/countries";
-import { Country } from "../../types";
+import { CountryExtendedBorders } from "../../types";
 
 interface DetailsProps {
-  country: Country;
+  country: CountryExtendedBorders;
 }
 
 const Container = styled.div`

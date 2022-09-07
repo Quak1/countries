@@ -25,7 +25,7 @@ export interface Country {
   translations: Record<string, NativeName>;
   latlng: number[];
   landlocked: false;
-  borders: string[];
+  borders?: string[];
   area: number;
   demonyms: Record<string, Demonym>;
   flag: string;
@@ -80,3 +80,9 @@ export type CardPartialCountry = Pick<
 >;
 
 export type CountryName = Pick<Country, "name">;
+export interface CountryExtendedBorders extends Omit<Country, "borders"> {
+  borders?: {
+    code: string;
+    name: string;
+  }[];
+}

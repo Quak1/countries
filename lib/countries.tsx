@@ -1,4 +1,9 @@
-import { CardPartialCountry, Country, CountryName } from "../types";
+import {
+  CardPartialCountry,
+  Country,
+  CountryName,
+  CountryExtendedBorders,
+} from "../types";
 
 const API_URL = "https://restcountries.com/v3.1";
 
@@ -24,14 +29,23 @@ export async function getCountryByCode(id: string) {
   const res = await fetch(`${API_URL}/alpha/${id}`);
   const country: Country = (await res.json())[0];
 
-  if (country.borders) {
-    const borderCountriesNames = await Promise.all(
-      country.borders.map((country) => getCommonCountryName(country))
-    );
-    country.borders = borderCountriesNames;
-  }
+  if (!country.borders) return country;
 
-  return country;
+  const borderCountries = await Promise.all(
+    country.borders.map(async (code) => {
+      const name = await getCommonCountryName(code);
+      return {
+        name,
+        code,
+      };
+    })
+  );
+  const extendedCountry: CountryExtendedBorders = {
+    ...country,
+    borders: borderCountries,
+  };
+
+  return extendedCountry;
 }
 
 async function getCommonCountryName(id: string) {

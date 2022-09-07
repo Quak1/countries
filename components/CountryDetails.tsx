@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import Image from "next/future/image";
+import Link from "next/link";
 
-import { Country } from "../types";
+import { CountryExtendedBorders } from "../types";
 
 interface CountryDetailsProps {
-  country: Country;
+  country: CountryExtendedBorders;
 }
 
 const Container = styled.div`
@@ -52,7 +53,9 @@ const InfoEntry = styled.div`
   margin-bottom: 13px;
 `;
 
-const BorderCountry = styled.span`
+const BorderCountry = styled.a`
+  color: inherit;
+  text-decoration: unset;
   padding: 4px 18px;
   background-color: ${({ theme }) => theme.colors.elements};
   box-shadow: 0 0 10px rgba(0, 0, 0, 20%);
@@ -138,8 +141,14 @@ const CountryDetails = ({ country }: CountryDetailsProps) => {
           <InfoTitle>Border Countries: </InfoTitle>
           {/* TODO can click on countries */}
           {country.borders ? (
-            country.borders.map((name) => (
-              <BorderCountry key={name}>{name}</BorderCountry>
+            country.borders.map((country) => (
+              <Link
+                key={country.code}
+                href={`/country/${country.code}`}
+                passHref
+              >
+                <BorderCountry>{country.name}</BorderCountry>
+              </Link>
             ))
           ) : (
             <NoBorderMessage>no borders</NoBorderMessage>
