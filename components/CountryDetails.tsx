@@ -9,25 +9,33 @@ interface CountryDetailsProps {
 
 const Container = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const FlagContainer = styled.div`
-  min-width: 450px;
-  max-width: 40vw;
+  min-width: 400px;
+  max-width: 560px;
   max-height: 400px;
+  flex: 2 1 400px;
 `;
 
 const InfoContainer = styled.div`
   font-size: 16px;
   color: ${({ theme }) => theme.colors.text};
+  flex: 1 1 420px;
+`;
+
+const CountryName = styled.h1`
+  margin: 35px 0;
 `;
 
 const InfoGroups = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-bottom: 60px;
-  gap: 80px 10px;
+  gap: 60px 10px;
 `;
 
 const InfoGroup = styled.div`
@@ -73,12 +81,13 @@ const CountryDetails = ({ country }: CountryDetailsProps) => {
             width: "100%",
             height: "auto",
             maxHeight: "100%",
+            objectFit: "contain",
           }}
         />
       </FlagContainer>
 
       <InfoContainer>
-        <h1>{country.name.common}</h1>
+        <CountryName>{country.name.common}</CountryName>
         <InfoGroups>
           <InfoGroup>
             <InfoEntry>

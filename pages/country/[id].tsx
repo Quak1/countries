@@ -10,8 +10,8 @@ interface DetailsProps {
 }
 
 const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-wrap: wrap;
   margin: 0 80px;
 `;
 
