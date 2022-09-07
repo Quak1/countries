@@ -11,6 +11,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 50px;
 `;
 
 const FlagContainer = styled.div`
@@ -27,7 +28,8 @@ const InfoContainer = styled.div`
 `;
 
 const CountryName = styled.h1`
-  margin: 35px 0;
+  margin: 0;
+  margin-bottom: 35px;
 `;
 
 const InfoGroups = styled.div`
