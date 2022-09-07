@@ -23,6 +23,10 @@ const CustomSelect = styled(Select)`
     padding: 15px 22px;
   }
 
+  & .SelectRegion__placeholder {
+    color: ${({ theme }) => theme.colors.fadedColor};
+  }
+
   & .SelectRegion__single-value {
     color: ${({ theme }) => theme.colors.text};
     margin: 0;

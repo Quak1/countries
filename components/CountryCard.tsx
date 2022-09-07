@@ -9,9 +9,9 @@ interface CountryCardProps {
 
 const CardContainer = styled.article`
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: ${({ theme }) => theme.borderRadius};
 
-  box-shadow: 0 0 15px rgba(0, 0, 0, 15%);
+  box-shadow: ${({ theme }) => theme.shadow};
   background-color: ${({ theme }) => theme.colors.elements};
   color: ${({ theme }) => theme.colors.text};
 `;

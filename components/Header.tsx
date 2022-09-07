@@ -14,7 +14,7 @@ const HeaderContainer = styled.header`
   padding-left: 5.5vw;
   padding-right: 5.5vw;
 
-  box-shadow: 0 0 15px rgba(0, 0, 0, 15%);
+  box-shadow: ${({ theme }) => theme.shadow};
   background-color: ${({ theme }) => theme.colors.elements};
   color: ${({ theme }) => theme.colors.text};
 `;

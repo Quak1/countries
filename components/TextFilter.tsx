@@ -13,7 +13,7 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.elements};
   color: ${({ theme }) => theme.colors.text};
   border: unset;
-  border-radius: 8px;
+  border-radius: ${({ theme }) => theme.borderRadius};
   width: 480px;
 `;
 
@@ -27,7 +27,7 @@ const Input = styled.input`
 
   color: ${({ theme }) => theme.colors.text};
   &::placeholder {
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.fadedText};
   }
 `;
 

@@ -62,7 +62,7 @@ const BorderCountry = styled.a`
   text-decoration: unset;
   padding: 4px 18px;
   background-color: ${({ theme }) => theme.colors.elements};
-  box-shadow: 0 0 10px rgba(0, 0, 0, 20%);
+  box-shadow: ${({ theme }) => theme.shadow};
 `;
 
 const BorderCountriesContainer = styled.div`

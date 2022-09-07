@@ -10,8 +10,8 @@ const HomeLink = styled.a`
   background-color: ${({ theme }) => theme.colors.elements};
   color: ${({ theme }) => theme.colors.text};
   text-decoration: unset;
-  border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 15%);
+  border-radius: ${({ theme }) => theme.borderRadius};
+  box-shadow: ${({ theme }) => theme.shadow};
 `;
 
 const Icon = styled.span`
