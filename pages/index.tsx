@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import { getAllCountries } from "../lib/countries";
-import CountryCard from "../components/CountryCard";
+import ClickableCountryCard from "../components/ClickableCountryCard";
 import SelectRegion from "../components/SelectRegion";
 import TextFilter from "../components/TextFilter";
 
@@ -61,7 +61,7 @@ const Home = ({
       </FiltersContainer>
       <Grid>
         {filteredCountries.map((entry) => (
-          <CountryCard country={entry} key={entry.cca3} />
+          <ClickableCountryCard country={entry} key={entry.cca3} />
         ))}
       </Grid>
     </>
