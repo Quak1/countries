@@ -1,4 +1,4 @@
-interface Country {
+export interface Country {
   name: {
     common: string;
     official: string;
@@ -24,6 +24,9 @@ interface Country {
   languages: Record<string, string>;
   translations: Record<string, NativeName>;
   latlng: number[];
+  landlocked: false;
+  borders?: string[];
+  area: number;
   demonyms: Record<string, Demonym>;
   flag: string;
   maps: {
@@ -41,6 +44,7 @@ interface Country {
   continents: string[];
   flags: Pictures;
   coatOfArms: Pictures;
+  startOfWeek: string;
   capitalInfo: {
     latlng: number[];
   };
@@ -74,3 +78,11 @@ export type CardPartialCountry = Pick<
   Country,
   "name" | "flags" | "cca3" | "capital" | "region" | "population"
 >;
+
+export type CountryName = Pick<Country, "name">;
+export interface CountryExtendedBorders extends Omit<Country, "borders"> {
+  borders?: {
+    code: string;
+    name: string;
+  }[];
+}

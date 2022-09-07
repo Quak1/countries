@@ -49,7 +49,7 @@ const CountryCard = ({ country }: CountryCardProps) => {
       <FlagContainer>
         <Image
           src={country.flags.svg}
-          alt={`${country.name.common}'s capital`}
+          alt={`${country.name.common}'s flag`}
           layout="fill"
           objectFit="cover"
         />
