@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import { ThemeType } from "../styles/themes";
 
-const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
+const GlobalStyle = createGlobalStyle<{ theme: any }>`
     html,
     body {
         padding: 0;

@@ -1,38 +1,32 @@
-export interface ThemeType {
-  colors: {
-    text: string;
-    input: string;
-    background: string;
-    elements: string;
-  };
-  font: {
-    default: string;
-    details: string;
-  };
-}
-
-export const ligthTheme: ThemeType = {
-  colors: {
-    text: "hsl(200, 15%, 8%)",
-    input: "hsl(0, 0%, 52%)",
-    background: "hsl(0, 0%, 98%)",
-    elements: "hsl(0, 0%, 100%)",
-  },
+const sharedProperties = {
+  shadow: "0 0 15px rgba(0, 0, 0, 15%)",
+  borderRadius: "8px",
+  marginDesktop: "80px",
+  marginMobile: "7.5vw",
   font: {
     default: "12px",
     details: "14px",
   },
 };
 
-export const darkTheme: ThemeType = {
+export const ligthTheme = {
+  ...sharedProperties,
+  colors: {
+    text: "hsl(200, 15%, 8%)",
+    fadedText: "#9FAFB8",
+    input: "hsl(0, 0%, 52%)",
+    background: "hsl(0, 0%, 98%)",
+    elements: "hsl(0, 0%, 100%)",
+  },
+};
+
+export const darkTheme = {
+  ...sharedProperties,
   colors: {
     text: "hsl(0, 0%, 100%)",
+    fadedText: "#929292",
     input: "hsl(0, 0%, 100%)",
     background: "hsl(207, 26%, 17%)",
     elements: "hsl(209, 23%, 22%)",
-  },
-  font: {
-    default: "12px",
-    details: "14px",
   },
 };
