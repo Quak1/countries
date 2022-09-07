@@ -2,6 +2,7 @@ import { GetStaticProps } from "next";
 import styled from "styled-components";
 
 import CountryDetails from "../../components/CountryDetails";
+import BackButton from "../../components/BackButton";
 import { getAllIds, getCountryByCode } from "../../lib/countries";
 import { Country } from "../../types";
 
@@ -10,14 +11,19 @@ interface DetailsProps {
 }
 
 const Container = styled.div`
-  // display: flex;
-  // flex-wrap: wrap;
   margin: 0 80px;
+`;
+
+const Back = styled.div`
+  margin: 80px 0;
 `;
 
 const Details = ({ country }: DetailsProps) => {
   return (
     <Container>
+      <Back>
+        <BackButton />
+      </Back>
       <CountryDetails country={country} />
     </Container>
   );
