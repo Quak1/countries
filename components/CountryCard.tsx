@@ -11,7 +11,7 @@ const CardContainer = styled.article`
   overflow: hidden;
   border-radius: ${({ theme }) => theme.borderRadius};
 
-  box-shadow: ${({ theme }) => theme.shadow};
+  box-shadow: 0 0 15px rgba(0, 0, 0, 8%);
   background-color: ${({ theme }) => theme.colors.elements};
   color: ${({ theme }) => theme.colors.text};
 `;

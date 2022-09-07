@@ -91,6 +91,7 @@ const CountryDetails = ({ country }: CountryDetailsProps) => {
             height: "auto",
             maxHeight: "100%",
             objectFit: "contain",
+            boxShadow: "0 0 20px rgba(0, 0, 0, 5%)",
           }}
         />
       </FlagContainer>
