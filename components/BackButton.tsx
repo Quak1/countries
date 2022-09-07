@@ -6,6 +6,7 @@ const HomeLink = styled.a`
   align-items: center;
   max-width: 140px;
   padding: 10px 35px;
+  font-weight: 600;
 
   background-color: ${({ theme }) => theme.colors.elements};
   color: ${({ theme }) => theme.colors.text};
@@ -16,6 +17,7 @@ const HomeLink = styled.a`
 
 const Icon = styled.span`
   margin-right: 10px;
+  font-weight: 600;
 `;
 
 const BackButton = () => {

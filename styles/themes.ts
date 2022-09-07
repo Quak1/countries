@@ -1,5 +1,5 @@
 const sharedProperties = {
-  shadow: "0 0 5px rgba(0, 0, 0, 25%)",
+  shadow: "0 0 7px rgba(0, 0, 0, 20%)",
   borderRadius: "5px",
   marginDesktop: "80px",
   marginMobile: "7.5vw",

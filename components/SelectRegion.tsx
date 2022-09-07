@@ -16,7 +16,7 @@ const CustomSelect = styled(Select)`
     background-color: ${({ theme }) => theme.colors.elements};
     color: ${({ theme }) => theme.colors.text};
     border: unset;
-    box-shadow: unset;
+    box-shadow: ${({ theme }) => theme.shadow};
   }
 
   & .SelectRegion__value-container {

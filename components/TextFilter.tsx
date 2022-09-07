@@ -15,6 +15,7 @@ const Container = styled.div`
   border: unset;
   border-radius: ${({ theme }) => theme.borderRadius};
   width: 480px;
+  box-shadow: ${({ theme }) => theme.shadow};
 `;
 
 const Input = styled.input`
