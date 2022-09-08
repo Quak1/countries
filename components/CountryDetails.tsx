@@ -72,8 +72,8 @@ const BorderCountriesContainer = styled.div`
   gap: 10px;
 `;
 
-// TODO faded color
 const NoBorderMessage = styled.span`
+  color: ${({ theme }) => theme.colors.fadedText};
   font-style: italic;
 `;
 
