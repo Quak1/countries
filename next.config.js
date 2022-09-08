@@ -12,6 +12,8 @@ const nextConfig = {
     images: {
       allowFutureImage: true,
     },
+    workerThreads: false,
+    cpus: 1,
   },
 };
 
