@@ -13,7 +13,11 @@ const A = styled.a`
 `;
 
 const ClickableCountryCard = ({ country }: ClickableCountryCardProps) => (
-  <Link href={`/country/${country.cca3}`} passHref prefetch={false}>
+  <Link
+    href={`/country/${country.name.common.toLowerCase()}`}
+    passHref
+    prefetch={false}
+  >
     <A>
       <CountryCard country={country} />
     </A>

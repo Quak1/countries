@@ -144,12 +144,11 @@ const CountryDetails = ({ country }: CountryDetailsProps) => {
         </InfoGroups>
         <BorderCountriesContainer>
           <InfoTitle>Border Countries: </InfoTitle>
-          {/* TODO can click on countries */}
           {country.borders ? (
             country.borders.map((country) => (
               <Link
                 key={country.code}
-                href={`/country/${country.code}`}
+                href={`/country/${country.name.toLowerCase()}`}
                 passHref
               >
                 <BorderCountry>{country.name}</BorderCountry>
