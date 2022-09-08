@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import CountryDetails from "../../components/CountryDetails";
 import BackButton from "../../components/BackButton";
-import { getAllIds, getCountryByCode } from "../../lib/countries";
+import { getAllNames, getCountryByName } from "../../lib/countries";
 import { CountryExtendedBorders } from "../../types";
 
 interface DetailsProps {
@@ -38,7 +38,7 @@ const Details = ({ country }: DetailsProps) => {
 };
 
 export const getStaticPaths = async () => {
-  const paths = await getAllIds();
+  const paths = await getAllNames();
   return {
     paths,
     fallback: false,
@@ -46,7 +46,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const country = await getCountryByCode(params!.id as string);
+  const country = await getCountryByName(params!.name as string);
   return {
     props: {
       country,

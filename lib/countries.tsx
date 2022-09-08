@@ -32,31 +32,58 @@ export async function getAllIds() {
   ]);
 }
 
-export async function getCountryByCode(id: string) {
-  const res = await fetch(`${API_URL}/alpha/${id}`);
-  const country: Country = (await res.json())[0];
+export async function getAllNames() {
+  const res = await fetch(`${API_URL}/all?fields=name`);
+  const countryNames: CountryName[] = await res.json();
+  const countries = countryNames.flatMap((country) => [
+    {
+      params: {
+        name: country.name.common.toLowerCase(),
+      },
+    },
+  ]);
+  return countries;
+}
 
-  if (!country.borders) return country;
+async function createExtendedBorders(country: Country) {
+  const extendedBorders = await Promise.all(
+    country.borders!.map(async (code) => {
+      const res = await fetch(`${API_URL}/alpha/${code}`);
+      const countries: Country[] = await res.json();
 
-  const borderCountries = await Promise.all(
-    country.borders.map(async (code) => {
-      const name = await getCommonCountryName(code);
+      const country = countries.find((country) => country.cca3 === code);
+      if (!country) throw new Error("Country not found");
       return {
-        name,
-        code,
+        name: country.name.common,
+        code: country.cca3,
       };
     })
   );
-  const extendedCountry: CountryExtendedBorders = {
-    ...country,
-    borders: borderCountries,
-  };
 
-  return extendedCountry;
+  return {
+    ...country,
+    borders: extendedBorders,
+  };
 }
 
-async function getCommonCountryName(id: string) {
-  const res = await fetch(`${API_URL}/alpha/${id}?fields=name`);
-  const name: CountryName = await res.json();
-  return name.name.common;
+export async function getCountryByName(name: string) {
+  const res = await fetch(`${API_URL}/name/${name}?fullText=true`);
+  const countries: Country[] = await res.json();
+  const country = countries.find(
+    (country) => country.name.common.toLowerCase() === name.toLowerCase()
+  );
+
+  if (!country) throw new Error("Country not found");
+  if (!country.borders) return country;
+  return await createExtendedBorders(country);
+}
+
+export async function getCountryByCode(id: string) {
+  const res = await fetch(`${API_URL}/alpha/${id}`);
+  const countries: Country[] = await res.json();
+  const country = countries.find((country) => country.cca3 === id);
+
+  if (!country) throw new Error("Country not found");
+  if (!country.borders) return country;
+  return await createExtendedBorders(country);
 }
